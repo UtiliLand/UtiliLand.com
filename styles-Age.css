@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    border-radius: 25px;
+    padding: 30px 20px;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.3), 0 5px 10px #38f8b6;
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    font-weight: 600;
+    padding: 15px 0;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+}
+
+.child {
+    flex: 1;
+    min-width: 100px;
+}
+
+.child input {
+    background-color: transparent;
+    color: #fff;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.child input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: transparent;
+    border: 1px solid #43ea87;
+    border-radius: 25px;
+    color: #43ea87;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #43ea87;
+    color: #192735;
+}
+
+.age {
+    color: #fff;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.text-color {
+    color: #43ea87;
+    font-size: 1.5rem;
+}

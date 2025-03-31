@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3124040343725382">
+    <link rel="stylesheet" href="styles-calendar.css">
+    <title>Calendar</title>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TFN5KEK9TE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TFN5KEK9TE');
+</script>
+<body>
+    <div class="hero">
+        <div class="calendar">
+            <div class="left">
+                <p id="date">01</p>
+                <p id="day">Monday</p>
+            </div>
+            <div class="right">
+                <p id="month">January</p>
+                <p id="year">2000</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const date = document.getElementById("date");
+        const day = document.getElementById("day");
+        const month = document.getElementById("month");
+        const year = document.getElementById("year");
+
+        const today = new Date();
+
+        const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday",
+            "Saturday"];
+        const allMonths = ["January", "Febuary", "March", "April", "May", "June", "July",
+            "August", "September", "October","November", "December"];
+
+        date.innerHTML = (today.getDate()<10?"0":"") + today.getDate();
+        day.innerHTML = weekDays[today.getDay()];
+        month.innerHTML = allMonths[today.getMonth()];
+        year.innerHTML = today.getFullYear();
+    </script>
+
+</body>
+</html>

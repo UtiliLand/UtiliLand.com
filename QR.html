@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3124040343725382">
+    <link rel="stylesheet" href="styles-QR.css">
+    <title>QR Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TFN5KEK9TE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TFN5KEK9TE');
+</script>
+<body>
+    <div class="QR-container">
+        <h2>QR Code Generator</h2>
+        <input type="text" id="qrText" placeholder="Enter text or URL">
+        <button onclick="generateQR()">Generate QR Code</button>
+        <div id="qrcode"></div>
+    </div>
+
+    <script>
+        function generateQR() {
+            let qrText = document.getElementById("qrText").value.trim();
+            if (qrText === "") {
+                alert("Please enter text or URL");
+                return;
+            }
+
+            // Clear previous QR code
+            document.getElementById("qrcode").innerHTML = "";
+
+            // Generate new QR code
+            new QRCode(document.getElementById("qrcode"), {
+                text: qrText,
+                width: 200,
+                height: 200,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+</body>
+</html>

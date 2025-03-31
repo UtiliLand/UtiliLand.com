@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3124040343725382">
+    <link rel="stylesheet" href="styles-Age.css">
+    <title>Age Tracker</title>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TFN5KEK9TE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TFN5KEK9TE');
+</script>
+<body>
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <div class="input">
+            <div class="child">
+                <input type="text" id="date" placeholder="Date" required minlength="1" maxlength="2" autocomplete="off"/>
+            </div>
+            <div class="child">
+                <input type="text" id="month" placeholder="Month" required minlength="1" maxlength="2" autocomplete="off"/>
+            </div>
+            <div class="child">
+                <input type="text" id="year" placeholder="Year" required minlength="4" maxlength="4" autocomplete="off"/>
+            </div>
+        </div>
+        <button onclick="getage()">Calculate</button>
+        <div class="age"></div>
+    </div>
+
+    <script>
+        function getage() {
+            let date = parseInt(document.getElementById("date").value);
+            let month = parseInt(document.getElementById("month").value);
+            let year = parseInt(document.getElementById("year").value);
+
+            if (isNaN(date) || isNaN(month) || isNaN(year)) {
+                document.querySelector(".age").innerHTML = '<span class="text-color">Please enter a valid date!</span>';
+                return;
+            }
+
+            let today = new Date();
+            let currentDate = today.getDate();
+            let currentMonth = today.getMonth() + 1;
+            let currentYear = today.getFullYear();
+
+            let monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                monthDays[1] = 29;
+            }
+
+            if (date > currentDate) {
+                currentDate += monthDays[currentMonth - 1];
+                currentMonth -= 1;
+            }
+
+            if (month > currentMonth) {
+                currentMonth += 12;
+                currentYear -= 1;
+            }
+
+            let d = currentDate - date;
+            let m = currentMonth - month;
+            let y = currentYear - year;
+
+            document.querySelector(".age").innerHTML = 
+                `Your Age is <span class="text-color">${y}</span> Years, 
+                <span class="text-color">${m}</span> Months, 
+                <span class="text-color">${d}</span> Days.`;
+        }
+    </script>
+</body>
+</html>

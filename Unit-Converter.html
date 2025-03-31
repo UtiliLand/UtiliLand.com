@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3124040343725382">
+    <link rel="stylesheet" href="styles-Unit.css">
+    <title>Unit Converter</title>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TFN5KEK9TE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TFN5KEK9TE');
+</script>
+<body>
+    <div class="Cnvtr-container">
+        <h2>Unit Converter</h2>
+        
+        <select id="conversionType" onchange="updateFields()">
+            <option value="length">Length</option>
+            <option value="weight">Weight</option>
+            <option value="temperature">Temperature</option>
+        </select>
+
+        <input type="number" id="inputValue" placeholder="Enter value">
+        
+        <select id="unitType"></select>
+
+        <button onclick="convert()">Convert</button>
+
+        <div class="result" id="result">Converted Value: -</div>
+    </div>
+
+    <script>
+        const unitOptions = {
+            length: [
+                { value: "mm-to-cm", text: "Millimeters to Centimeters" },
+                { value: "cm-to-mm", text: "Centimeters to Millimeters" },
+                { value: "cm-to-m", text: "Centimeters to Meters" },
+                { value: "m-to-cm", text: "Meters to Centimeters" },
+                { value: "m-to-km", text: "Meters to Kilometers" },
+                { value: "km-to-m", text: "Kilometers to Meters" }
+            ],
+            weight: [
+                { value: "g-to-kg", text: "Grams to Kilograms" },
+                { value: "kg-to-g", text: "Kilograms to Grams" },
+                { value: "kg-to-lb", text: "Kilograms to Pounds" },
+                { value: "lb-to-kg", text: "Pounds to Kilograms" }
+            ],
+            temperature: [
+                { value: "c-to-f", text: "Celsius to Fahrenheit" },
+                { value: "f-to-c", text: "Fahrenheit to Celsius" }
+            ]
+        };
+
+        function updateFields() {
+            const conversionType = document.getElementById("conversionType").value;
+            const unitType = document.getElementById("unitType");
+            unitType.innerHTML = "";
+            unitOptions[conversionType].forEach(option => {
+                let opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.text;
+                unitType.appendChild(opt);
+            });
+        }
+
+        function convert() {
+            let inputValue = parseFloat(document.getElementById("inputValue").value);
+            let unitType = document.getElementById("unitType").value;
+            let result = 0;
+
+            if (!isNaN(inputValue)) {
+                switch (unitType) {
+                    case "mm-to-cm": result = inputValue / 10; break;
+                    case "cm-to-mm": result = inputValue * 10; break;
+                    case "cm-to-m": result = inputValue / 100; break;
+                    case "m-to-cm": result = inputValue * 100; break;
+                    case "m-to-km": result = inputValue / 1000; break;
+                    case "km-to-m": result = inputValue * 1000; break;
+                    case "g-to-kg": result = inputValue / 1000; break;
+                    case "kg-to-g": result = inputValue * 1000; break;
+                    case "kg-to-lb": result = inputValue * 2.20462; break;
+                    case "lb-to-kg": result = inputValue / 2.20462; break;
+                    case "c-to-f": result = (inputValue * 9/5) + 32; break;
+                    case "f-to-c": result = (inputValue - 32) * 5/9; break;
+                }
+            }
+            document.getElementById("result").textContent = `Converted Value: ${result.toFixed(4)}`;
+        }
+
+        updateFields();
+    </script>
+</body>
+</html>
